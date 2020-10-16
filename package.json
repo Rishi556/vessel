@@ -1,7 +1,7 @@
 {
   "name": "vessel",
   "productName": "vessel",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "description": "A simple wallet for managing your Hive accounts.",
   "scripts": {
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings ./test/runTests.js",
@@ -220,7 +220,7 @@
     "formsy-react": "^1.1.5",
     "formsy-semantic-ui-react": "^0.3.5",
     "history": "^4.10.1",
-    "hivejs": "npm:steem@^0.7.7",
+    "hivejs": "npm:@hiveio/hive-js@^0.8.5",
     "react": "^16.4.0",
     "react-autocomplete": "^1.8.1",
     "react-collapsible": "^2.6.2",

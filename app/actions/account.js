@@ -62,20 +62,20 @@ export const ACCOUNT_TRANSFER_TO_SAVINGS_COMPLETED = 'ACCOUNT_TRANSFER_TO_SAVING
 export const ACCOUNT_CONTACTS_ADD = 'ACCOUNT_CONTACTS_ADD';
 export const ACCOUNT_CONTACTS_REMOVE = 'ACCOUNT_CONTACTS_REMOVE';
 
+hive.config.set('rebranded_api', true)
+hive.broadcast.updateOperations()
+
 export function claimRewardBalance(wif: string, params: object) {
   return (dispatch: () => void) => {
     const { account, reward_hive, reward_hbd, reward_vests } = params;
-    let reward_steem = reward_hive.replace("HIVE", "STEEM");
-    let reward_sbd = reward_hbd.replace("HBD", "SBD");
     const ops = [
       ['claim_reward_balance', {
         account,
-        reward_steem,
-        reward_sbd,
+        reward_hive,
+        reward_hbd,
         reward_vests
       }]
     ];
-    console.error(JSON.stringify(ops))
     hive.broadcast.send({
       operations: ops,
       extensions: []
@@ -267,8 +267,6 @@ export function refreshAccountData(accounts: Array) {
 export function transfer(wif, params) {
   return (dispatch: () => void) => {
     var { from, to, amount, memo } = params;
-    amount = amount.replace("HIVE", "STEEM");
-    amount = amount.replace("HBD", "SBD");
     dispatch({
       type: ACCOUNT_TRANSFER_STARTED
     });
@@ -297,8 +295,6 @@ export function transferCompleted() {
 export function transferFromSavings(wif, params) {
   return (dispatch: () => void) => {
     var { from, requestId, to, amount, memo } = params;
-    amount = amount.replace("HIVE", "STEEM");
-    amount = amount.replace("HBD", "SBD");
     dispatch({
       type: ACCOUNT_TRANSFER_FROM_SAVINGS_STARTED
     });
@@ -327,8 +323,6 @@ export function transferFromSavingsCompleted() {
 export function transferToSavings(wif, params) {
   return (dispatch: () => void) => {
     var { from, to, amount, memo } = params;
-    amount = amount.replace("HIVE", "STEEM");
-    amount = amount.replace("HBD", "SBD");
     dispatch({
       type: ACCOUNT_TRANSFER_TO_SAVINGS_STARTED
     });
@@ -521,7 +515,7 @@ export function cancelWithdrawVesting(wif, params) {
 export function powerUp(wif, params) {
   return (dispatch: () => void) => {
     const { from_account, to_account, hiveAmount } = params;
-    const hiveFormat = [hiveAmount, "STEEM"].join(" ");
+    const hiveFormat = [hiveAmount, "HIVE"].join(" ");
     dispatch({
       type: ACCOUNT_POWER_UP_STARTED
     });

@@ -53,7 +53,7 @@ export default class AccountsProxy extends Component {
     }
     const vests = parsed.toFixed(6);
     const props = this.props.hive.props;
-    const totalVestsHive = parseFloat(props.total_vesting_fund_steem.split(" ")[0])
+    const totalVestsHive = parseFloat(props.total_vesting_fund_hive.split(" ")[0])
     const totalVests = parseFloat(props.total_vesting_shares.split(" ")[0])
     const sp = (totalVestsHive * vests / totalVests).toFixed(3);
     this.setState({ vests, sp });
@@ -66,7 +66,7 @@ export default class AccountsProxy extends Component {
     }
     const vests = parsed.toFixed(6);
     const props = this.props.hive.props;
-    const totalVestsHive = parseFloat(props.total_vesting_fund_steem.split(" ")[0])
+    const totalVestsHive = parseFloat(props.total_vesting_fund_hive.split(" ")[0])
     const totalVests = parseFloat(props.total_vesting_shares.split(" ")[0])
     const sp = (totalVestsHive * vests / totalVests).toFixed(3);
     this.setState({ vests, sp });

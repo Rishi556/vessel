@@ -35,6 +35,8 @@ export const KEY_ADD_PROMPT = 'KEY_ADD_PROMPT';
 export const KEY_CREATE_CANCEL = 'KEY_CREATE_CANCEL';
 export const KEY_CREATE_PROMPT = 'KEY_CREATE_PROMPT';
 
+hive.config.set('rebranded_api', true)
+hive.broadcast.updateOperations()
 
 export function addKey(account: string, wif: string) {
   const isValidKey = hive.auth.isWif(wif);

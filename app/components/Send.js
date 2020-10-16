@@ -4,6 +4,9 @@ import { Button, Checkbox, Grid, Label, Message, Modal, Radio, Segment, Select, 
 import { Form, Input } from 'formsy-semantic-ui-react';
 import hive from 'hivejs';
 
+hive.config.set('rebranded_api', true)
+hive.broadcast.updateOperations()
+
 const { shell } = require('electron');
 
 var exchangeOptions = [
@@ -48,14 +51,6 @@ const exchangeLinks = {
   mxchive: 'https://mxc.com'
 };
 
-const exchangeNotes = {
-  'silly-einstein': (
-    <Message>
-      <strong>Warning</strong>:
-      Blocktrades (@blocktrades) is currently blocked on Steem. Account updated to @silly-einstein (current Steem Blocktrades account).
-    </Message>
-  )
-}
 
 const exchangeSupportingEncryption = ['bittrex'];
 
@@ -196,7 +191,7 @@ export default class Send extends Component {
   setAmountMaximum = (e: SyntheticEvent) => {
     const accounts = this.props.account.accounts;
     const { from, symbol } = this.state;
-    let field = (symbol === 'HBD') ? 'sbd_balance' : 'balance';
+    let field = (symbol === 'HBD') ? 'hbd_balance' : 'balance';
     if(this.state.sourceType === "savings"){ field = `savings_${field}` }
     const amount = accounts[from][field].split(' ')[0];
     this.setState({ amount });
@@ -329,8 +324,7 @@ export default class Send extends Component {
   handleBlocktrades = (network) => {
     network = network ? network.toLowerCase() : 'hive';
     var key = {
-      hive: 'blocktrades',
-      steem: 'silly-einstein'
+      hive: 'blocktrades'
     }
     var found = exchangeOptions.find((x) => { return x.key === key[network]; })
     if ( !found ) {
@@ -371,7 +365,7 @@ export default class Send extends Component {
         text: name + ' (unavailable - active/owner key not loaded)'
       };
     });
-    let field = (this.state.symbol === 'HBD') ? 'sbd_balance' : 'balance';
+    let field = (this.state.symbol === 'HBD') ? 'hbd_balance' : 'balance';
     if(this.state.sourceType === 'savings'){ field = `savings_${field}` };
     const availableAmount = accounts[this.state.from][field];
     const errorLabel = <Label color="red" pointing/>;
