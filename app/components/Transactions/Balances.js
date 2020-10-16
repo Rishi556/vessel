@@ -8,8 +8,12 @@ import AccountName from '../global/AccountName';
 export default class PendingReward extends Component {
   getBalances(data) {
     const props = this.props.hive.props;
-    const totalVestsHive = parseFloat(props.total_vesting_fund_hive.split(' ')[0])
-    const totalVests = parseFloat(props.total_vesting_shares.split(' ')[0])
+    let totalVestsHive = 0
+    let totalVests = 0;
+    if (props.total_vesting_fund_hive){
+      totalVestsHive = parseFloat(props.total_vesting_fund_hive.split(' ')[0])
+      totalVests = parseFloat(props.total_vesting_shares.split(' ')[0])
+    }
     const mapping = {
       HBD: ['hbd_balance'],
       HBD_SAVINGS: ['savings_hbd_balance'],
@@ -35,8 +39,10 @@ export default class PendingReward extends Component {
     }
     _.forOwn(mapping, (fields: Array, assignment: string) => {
       _.forEach(fields, (field) => {
-        const [value] = data[field].split(' ');
-        balances[assignment] += parseFloat(value);
+        if (data[field]){
+          const [value] = data[field].split(' ');
+          balances[assignment] += parseFloat(value);
+        }
       });
     });
     balances.HP = totalVestsHive * balances.VESTS / totalVests;

@@ -16,8 +16,6 @@ export function refreshGlobalProps() {
       } else {
         if(results.virtual_supply.search('HIVE') >= 0){
           results.network = "Hive";
-        } else if(results.virtual_supply.search('STEEM') >= 0){
-          results.network = "Steem";
         } else {
           results.network = "Unknown";
         }

@@ -36,12 +36,20 @@ class Routes extends Component {
     if (url && this.isURL(url)) {
       // If it's a valid URL, set
       hive.api.setOptions({ url });
+      hive.api.getConfig(function(err, result) {
+        //If url doesn't result in valid hive node, change to a known api.hive.blog
+        if (err || (!result["HIVE_CHAIN_ID"] || result["HIVE_CHAIN_ID"] != "beeab0de00000000000000000000000000000000000000000000000000000000")){
+          alert(`The provided url isn't a working hive node. Switching to https://api.hive.blog`)
+          hive.api.setOptions({ url: 'https://api.hive.blog' });
+        }
+      });
     } else {
       // Otherwise set to the api.hive.blog node
       hive.api.setOptions({ url: 'https://api.hive.blog' });
     }
     // Force a refresh immediately after change
     this.props.actions.refreshGlobalProps();
+    this.props.preferences.hived_node = url
   }
 
   componentWillMount() {

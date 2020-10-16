@@ -100,7 +100,7 @@ export function createAccountDelegated(wif: string, params: object, preferences 
     // } else {
     //   client = new Client('https://api.hive.blog');
     // }
-    // const dsteem = require('dsteem');
+
     // const creatorKey = dhive.PrivateKey.fromString(wif);
     dispatch(ProcessingActions.processingAccountCreate());
     // client.broadcast.createAccount({
@@ -129,7 +129,7 @@ export function getMinimumAccountDelegation(preferences = {}) {
     // const creationFee = Asset.from(chainProps.account_creation_fee);
     // const sharePrice = Praiice.from({
     //   base: dynamicProps.total_vesting_shares,
-    //   quote: dynamicProps.total_vesting_fund_steem
+    //   quote: dynamicProps.total_vesting_fund_hive
     // });
 
     // const ratio = constants.HIVE_CREATE_ACCOUNT_DELEGATION_RATIO;
