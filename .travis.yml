@@ -1,10 +1,9 @@
-sudo: false
+sudo: true
 
 language: node_js
 
 node_js:
-  - 7
-  - 6
+  - 5
 
 cache:
   directories:
