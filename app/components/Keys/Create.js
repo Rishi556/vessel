@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import hive from 'hivejs';
+import hive from '@hiveio/hive-js';
 import _ from 'lodash';
 import { Button, Checkbox, Divider, Grid, Header, Icon, Label, List, Message, Segment, Input, Select, Table, Modal } from 'semantic-ui-react';
 import KeysConfirm from './Confirm';

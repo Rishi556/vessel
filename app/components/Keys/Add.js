@@ -20,11 +20,10 @@ export default class Welcome extends Component {
     let display = (
       <Segment.Group>
         <Segment padded>
-          <Header>
-            Import a Hive account (w/ password)
+          <Header style={{ marginBottom: '10px' }}>
+            I have a password
             <Header.Subheader>
-              If your keys were generated with a password, you can use your username
-              and password to have your private keys derived and imported into the wallet.
+              Choose this option if your account was created with a password.
             </Header.Subheader>
           </Header>
           <Button
@@ -33,15 +32,14 @@ export default class Welcome extends Component {
             onClick={this.handleMethodChange}
             value="login-hive"
           >
-            Import a Hive account (w/ password)
+            Import Account with Password
           </Button>
         </Segment>
         <Segment padded>
-          <Header>
-            Import a private key
+          <Header style={{ marginBottom: '10px' }}>
+            Specific Private Key
             <Header.Subheader>
-              Any type of private key can be imported into your wallet,
-              granting different levels of permission based on the key used.
+              Choose this option if you want to import only a specific key. Possible keys: Posting, Active, Owner, Memo.
             </Header.Subheader>
           </Header>
           <Button
@@ -50,12 +48,12 @@ export default class Welcome extends Component {
             onClick={this.handleMethodChange}
             value="import-private-key"
           >
-            Import a private key
+            Import Private Key
           </Button>
         </Segment>
         <Segment padded>
-          <Header>
-            Experimental - Generate New Private Keys
+          <Header style={{ marginBottom: '10px' }}>
+            Experimental: Generate New Private Keys
             <Header.Subheader>
               For advanced users.
               Create a new set of public and private keys for a new Hive

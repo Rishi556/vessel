@@ -65,9 +65,9 @@ export default class PendingReward extends Component {
                   <Table.Cell>
                     <AccountName name={account} />
                   </Table.Cell>
-                  <Table.Cell>{this.props.account.accounts[account].reward_hbd_balance.split(" ")[0]}</Table.Cell>
-                  <Table.Cell>{this.props.account.accounts[account].reward_hive_balance.split(" ")[0]}</Table.Cell>
-                  <Table.Cell>{this.props.account.accounts[account].reward_vesting_balance.split(" ")[0]}</Table.Cell>
+                  <Table.Cell>{this.props.account.accounts[account].reward_hbd_balance}</Table.Cell>
+                  <Table.Cell>{this.props.account.accounts[account].reward_hive_balance}</Table.Cell>
+                  <Table.Cell>{this.props.account.accounts[account].reward_vesting_balance}</Table.Cell>
                 </Table.Row>
               ))}
             </Table.Body>

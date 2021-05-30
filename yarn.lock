@@ -5709,30 +5709,6 @@ history@^4.10.1, history@^4.7.2:
     tiny-warning "^1.0.0"
     value-equal "^1.0.1"
 
-"hivejs@npm:steem@^0.7.7":
-  version "0.7.11"
-  resolved "https://registry.yarnpkg.com/steem/-/steem-0.7.11.tgz#0e8349b4cb677b1438d929537670b028d1ef864e"
-  integrity sha512-ZKOJKVZRtm3eVxJbFOjCY7HcCry8018FWQZHSB64gvzlQUJ7x3qKu0fj1kffvA9AgUjVtxNo+KV7zg/xFI1kLg==
-  dependencies:
-    "@steemit/rpc-auth" "^1.1.1"
-    bigi "^1.4.2"
-    bluebird "^3.4.6"
-    browserify-aes "^1.0.6"
-    bs58 "^4.0.0"
-    buffer "^5.0.6"
-    bytebuffer "^5.0.1"
-    create-hash "^1.1.2"
-    create-hmac "^1.1.4"
-    cross-env "^5.0.0"
-    cross-fetch "^1.1.1"
-    debug "^2.6.8"
-    detect-node "^2.0.3"
-    ecurve "^1.0.5"
-    lodash "^4.16.4"
-    retry "^0.12.0"
-    secure-random "^1.1.2"
-    ws "^3.3.2"
-
 hmac-drbg@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"

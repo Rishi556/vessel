@@ -1,17 +1,17 @@
 // @flow
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { Icon, Menu } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-import * as AccountActions from '../actions/account';
-import * as HiveActions from '../actions/hive';
-import * as PreferencesActions from '../actions/preferences';
+import React, { Component } from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { Icon, Menu } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import * as AccountActions from "../actions/account";
+import * as HiveActions from "../actions/hive";
+import * as PreferencesActions from "../actions/preferences";
 
-const srcHive = require('../img/hive.png');
+const srcHive = require("../img/hive.png");
+const srcTestnet = require("../img/testnet.png");
 
 class MenuBar extends Component {
-
   state = {
     intervalId: 0
   };
@@ -34,34 +34,28 @@ class MenuBar extends Component {
     this.props.actions.refreshAccountData(this.props.keys.names);
     this.props.actions.refreshGlobalProps();
     // this.props.actions.getTransactions(this.props.account.names);
-  }
+  };
 
   render() {
-    let height = 'Loading', network = 'Loading';
+    let height = "Loading",
+      network = "Loading";
     if (this.props.hive.props) {
       height = this.props.hive.props.head_block_number;
-      network = this.props.hive.props.network || 'Hive';
+      network = this.props.hive.props.network || "Hive";
     }
     return (
       <Menu vertical fixed="left" color="black" inverted icon="labeled">
         <Menu.Item header>
-          <a onClick={() => {
-            setTimeout(() => {
-              this.props.actions.refreshAccountData(this.props.keys.names);
-              this.props.actions.refreshGlobalProps();
-            }, 250);
-          }}>
-            <img
-              alt="Vessel"
-              className="ui tiny image"
-              src={srcHive}
-              style={{
-                width: '50px',
-                height: '50px',
-                margin: '0 auto 1em',
-              }}
-            />
-          </a>
+          <img
+            alt="Vessel"
+            className="ui tiny image"
+            src={network === "Hive" ? srcHive : srcTestnet}
+            style={{
+              width: "50px",
+              height: "50px",
+              margin: "0 auto 1em"
+            }}
+          />
           Vessel
         </Menu.Item>
         <Link className="link item" to="/transactions">
@@ -91,21 +85,23 @@ class MenuBar extends Component {
         <Menu.Item
           className="link"
           style={{
-            position: 'absolute',
+            position: "absolute",
             bottom: 0
           }}
         >
-        <div>
-          <span style={{lineHeight: '1.5em'}}>Chain:</span><br/>
-          <span
-            style={{fontWeight: 700}}
-            className="hivered">{network}</span>
-          <hr />
-          <span style={{lineHeight: '1.5em'}}>Height:</span><br/>
-          <span
-            style={{fontWeight: 700}}
-            className="hivered">{height}</span>
-        </div>
+          <div>
+            <span style={{ lineHeight: "1.5em" }}>Chain:</span>
+            <br />
+            <span style={{ fontWeight: 700 }} className={network === "Hive" ? "hivered" : "hivetestnetpink"}>
+              {network}
+            </span>
+            <hr />
+            <span style={{ lineHeight: "1.5em" }}>Height:</span>
+            <br />
+            <span style={{ fontWeight: 700 }} className={network === "Hive" ? "hivered" : "hivetestnetpink"}>
+              {height}
+            </span>
+          </div>
         </Menu.Item>
       </Menu>
     );
@@ -122,11 +118,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({
-      ...AccountActions,
-      ...HiveActions,
-      ...PreferencesActions
-    }, dispatch)
+    actions: bindActionCreators(
+      {
+        ...AccountActions,
+        ...HiveActions,
+        ...PreferencesActions
+      },
+      dispatch
+    )
   };
 }
 

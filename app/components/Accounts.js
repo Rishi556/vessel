@@ -41,16 +41,16 @@ export default class Accounts extends Component {
             <span>
               {
                 (this.props.keys.permissions[name].memo)
-                ? <Icon size="large" color="green" name="checkmark" />
-                : (
-                  <Button
-                    basic
-                    icon="circle plus"
-                    color="black"
-                    onClick={t.handleAddMemoKey}
-                    value={name}
-                  />
-                )
+                  ? <Icon size="large" color="green" name="checkmark" />
+                  : (
+                    <Button
+                      basic
+                      icon="circle plus"
+                      color="black"
+                      onClick={t.handleAddMemoKey}
+                      value={name}
+                    />
+                  )
               }
             </span>
           </Table.Cell>
@@ -68,7 +68,7 @@ export default class Accounts extends Component {
     return (
       <Segment basic padded>
         <Header>
-          <Header.Subheader>
+          <Header.Subheader style={{ minHeight: '30px' }}>
             Each account within the wallet can have a different
             set of permissions and a different password encryption.
           </Header.Subheader>

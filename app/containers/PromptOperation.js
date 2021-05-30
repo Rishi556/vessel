@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
-import hive from 'hivejs';
+import hive from '@hiveio/hive-js';
 
 import * as AccountActions from '../actions/account';
 import * as KeysActions from '../actions/keys';

@@ -1,7 +1,7 @@
 {
   "name": "vessel",
   "productName": "vessel",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "description": "A simple wallet for managing your Hive accounts.",
   "scripts": {
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings ./test/runTests.js",
@@ -23,7 +23,7 @@
     "flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true",
     "start-hot-renderer": "cross-env HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./app/main.dev",
     "postinstall": "concurrently \"npm run flow-typed\" \"npm run build-dll\" \"electron-builder install-app-deps\" \"node node_modules/fbjs-scripts/node/check-dev-engines.js package.json\"",
-    "dev": "cross-env START_HOT=1 npm run hot-updates-server",
+    "dev": "cross-env NODE_ENV=development START_HOT=1 npm run hot-updates-server",
     "package": "npm run build && build --publish never",
     "package-win": "npm run build && build --win --x64",
     "package-linux": "npm run build && build --linux",
@@ -81,7 +81,7 @@
       "category": "Network",
       "desktop": {
         "Name": "vessel",
-        "Version": "0.5.0",
+        "Version": "1.0.0",
         "GenericName": "Hive Client",
         "X-GNOME-FullName": "vessel",
         "Comment": "A simple wallet for managing your Hive accounts.",
@@ -103,23 +103,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aaroncox/vessel.git"
-  },
-  "author": {
-    "name": "Aaron Cox",
-    "email": "aaron@greymass.com",
-    "url": "https://github.com/aaroncox"
+    "url": "git+https://gitlab.syncad.com/hive/vessel"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aaroncox/vessel/issues"
+    "url": "https://gitlab.syncad.com/hive/vessel/issues"
   },
   "keywords": [
     "hive",
     "blockchain",
     "wallet"
   ],
-  "homepage": "https://github.com/aaroncox/vessel",
+  "homepage": "https://gitlab.syncad.com/hive/vessel/vessel",
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
@@ -161,7 +156,7 @@
     "cross-spawn": "^5.1.0",
     "css-loader": "^0.28.11",
     "devtron": "^1.4.0",
-    "electron": "1.7.11",
+    "electron": "3.0.0",
     "electron-builder": "^21.2.0",
     "electron-devtools-installer": "^2.2.4",
     "eslint": "^6.8.0",
@@ -208,6 +203,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@hiveio/hive-js": "^0.8.13",
     "bip39": "^2.6.0",
     "bufferutil": "^3.0.5",
     "connected-react-router": "^6.6.1",
@@ -220,7 +216,6 @@
     "formsy-react": "^1.1.5",
     "formsy-semantic-ui-react": "^0.3.5",
     "history": "^4.10.1",
-    "hivejs": "npm:@hiveio/hive-js@^0.8.5",
     "react": "^16.4.0",
     "react-autocomplete": "^1.8.1",
     "react-collapsible": "^2.6.2",

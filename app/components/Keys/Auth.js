@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import hive from 'hivejs';
+import hive from '@hiveio/hive-js';
 import { Button, Checkbox, Divider, Form, Grid, Header, Message, Segment, Table, Radio } from 'semantic-ui-react';
 
 export default class KeysAuth extends Component {

@@ -16,7 +16,7 @@ export default class AccountAvatar extends Component {
       <a
         onClick={this.handleLink}
         style={{
-          backgroundImage: `url(https://images.hive.blog/u/${name || 'hiveio'}/avatar)`,
+          backgroundImage: `url(https://steemitimages.com/u/${name || 'steemit'}/avatar/medium)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

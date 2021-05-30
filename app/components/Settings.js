@@ -15,19 +15,19 @@ export default class Settings extends Component {
     }
   }
 
-   handleChange = (
+  handleChange = (
     e: SyntheticEvent, { name, value }: { name: string, value: string }
   ) => {
-     const { setPreference } = this.props.actions;
-     setPreference(name, value);
+    const { setPreference } = this.props.actions;
+    setPreference(name, value);
   }
 
   onValidSubmit = (
-   e: SyntheticEvent
- ) => {
+    e: SyntheticEvent
+  ) => {
     const { setPreference } = this.props.actions;
     setPreference('hived_node', e.hived_node);
- }
+  }
 
   handleContactChange = (e: SyntheticEvent, { value }: { value: string }) => {
     const cleaned = value.replace(/(@|\s)+/gim, ' ');
@@ -56,7 +56,7 @@ export default class Settings extends Component {
   render() {
     let modal = false;
     let contactList = this.props.account.contacts && this.props.account.contacts.map((contact) => {
-      return (        
+      return (
         <Table.Row key={contact} textAlign="center">
           <Table.Cell>
             {contact}
@@ -65,7 +65,7 @@ export default class Settings extends Component {
             <Button
               onClick={() => this.props.actions.removeContact(contact)}
               secondary
-              >
+            >
               Remove
             </Button>
           </Table.Cell>
@@ -139,18 +139,33 @@ export default class Settings extends Component {
             </Header>
             <Form.Group widths="equal">
               <Form.Input
-                label="HBD Memo (Unencrypted)"
-                name="blocktrades_hbd"
-                value={this.props.preferences.blocktrades_hbd}
-                onChange={this.handleChange}
-                placeholder="Enter your HBD Unencrypted Memo key for Blocktrades"
-              />
-              <Form.Input
                 label="HIVE Memo (Unencrypted)"
                 name="blocktrades_hive"
                 value={this.props.preferences.blocktrades_hive}
                 onChange={this.handleChange}
-                placeholder="Enter your HIVE Unencrypted Memo key for Blocktrades"
+                placeholder="Enter your HIVE Memo for Blocktrades"
+              />
+              <Form.Input
+                label="HBD Memo (Unencrypted)"
+                name="blocktrades_hbd"
+                value={this.props.preferences.blocktrades_hbd}
+                onChange={this.handleChange}
+                placeholder="Enter your HBD Memo for Blocktrades"
+              />
+            </Form.Group>
+          </Segment>
+
+          <Segment attached>
+            <Header size="small">
+              Binance
+            </Header>
+            <Form.Group widths="equal">
+              <Form.Input
+                label="HIVE Memo (Unencrypted)"
+                name="binance_hive"
+                value={this.props.preferences.binance_hive}
+                onChange={this.handleChange}
+                placeholder="Enter your HIVE Memo for Binance"
               />
             </Form.Group>
           </Segment>
@@ -161,18 +176,18 @@ export default class Settings extends Component {
             </Header>
             <Form.Group widths="equal">
               <Form.Input
-                label="HBD Memo (Unencrypted)"
-                name="bittrex_hbd"
-                value={this.props.preferences.bittrex_hbd}
-                onChange={this.handleChange}
-                placeholder="Enter your HBD Unencrypted Memo key for Bittrex"
-              />
-              <Form.Input
                 label="HIVE Memo (Unencrypted)"
                 name="bittrex_hive"
                 value={this.props.preferences.bittrex_hive}
                 onChange={this.handleChange}
-                placeholder="Enter your HIVE Unencrypted Memo key for Bittrex"
+                placeholder="Enter your HIVE Memo for Bittrex"
+              />
+              <Form.Input
+                label="HBD Memo (Unencrypted)"
+                name="bittrex_hbd"
+                value={this.props.preferences.bittrex_hbd}
+                onChange={this.handleChange}
+                placeholder="Enter your HBD Memo for Bittrex"
               />
             </Form.Group>
           </Segment>
@@ -183,18 +198,18 @@ export default class Settings extends Component {
             </Header>
             <Form.Group widths="equal">
               <Form.Input
-                label="HBD Memo (Unencrypted)"
-                name="huobi_hbd"
-                value={this.props.preferences.huobi_hbd}
-                onChange={this.handleChange}
-                placeholder="Enter your HBD Unencrypted Memo key for Huobi"
-              />
-              <Form.Input
                 label="HIVE Memo (Unencrypted)"
                 name="huobi_hive"
                 value={this.props.preferences.huobi_hive}
                 onChange={this.handleChange}
-                placeholder="Enter your HIVE Unencrypted Memo key for Huobi"
+                placeholder="Enter your HIVE Memo for Huobi"
+              />
+              <Form.Input
+                label="HBD Memo (Unencrypted)"
+                name="huobi_hbd"
+                value={this.props.preferences.huobi_hbd}
+                onChange={this.handleChange}
+                placeholder="Enter your HBD Unencrypted Memo for Huobi"
               />
             </Form.Group>
           </Segment>
@@ -205,18 +220,18 @@ export default class Settings extends Component {
             </Header>
             <Form.Group widths="equal">
               <Form.Input
-                label="HBD Memo (Unencrypted)"
-                name="ionomy_hbd"
-                value={this.props.preferences.ionomy_hbd}
-                onChange={this.handleChange}
-                placeholder="Enter your HBD Unencrypted Memo key for Ionomy"
-              />
-              <Form.Input
                 label="HIVE Memo (Unencrypted)"
                 name="ionomy_hive"
                 value={this.props.preferences.ionomy_hive}
                 onChange={this.handleChange}
-                placeholder="Enter your HIVE Unencrypted Memo key for Ionomy"
+                placeholder="Enter your HIVE Memo for Ionomy"
+              />
+              <Form.Input
+                label="HBD Memo (Unencrypted)"
+                name="ionomy_hbd"
+                value={this.props.preferences.ionomy_hbd}
+                onChange={this.handleChange}
+                placeholder="Enter your HBD Memo for Ionomy"
               />
             </Form.Group>
           </Segment>
@@ -227,18 +242,18 @@ export default class Settings extends Component {
             </Header>
             <Form.Group widths="equal">
               <Form.Input
-                label="HBD Memo (Unencrypted)"
-                name="probit_hbd"
-                value={this.props.preferences.probit_hbd}
-                onChange={this.handleChange}
-                placeholder="Enter your HBD Unencrypted Memo key for ProBit"
-              />
-              <Form.Input
                 label="HIVE Memo (Unencrypted)"
                 name="probit_hive"
                 value={this.props.preferences.probit_hive}
                 onChange={this.handleChange}
-                placeholder="Enter your HIVE Unencrypted Memo key for ProBit"
+                placeholder="Enter your HIVE Memo for ProBit"
+              />
+              <Form.Input
+                label="HBD Memo (Unencrypted)"
+                name="probit_hbd"
+                value={this.props.preferences.probit_hbd}
+                onChange={this.handleChange}
+                placeholder="Enter your HBD Memo for ProBit"
               />
             </Form.Group>
           </Segment>
@@ -249,18 +264,18 @@ export default class Settings extends Component {
             </Header>
             <Form.Group widths="equal">
               <Form.Input
-                label="HBD Memo (Unencrypted)"
-                name="mxc_hbd"
-                value={this.props.preferences.mxc_hbd}
-                onChange={this.handleChange}
-                placeholder="Enter your HBD Unencrypted Memo key for MXC"
-              />
-              <Form.Input
                 label="HIVE Memo (Unencrypted)"
                 name="mxc_hive"
                 value={this.props.preferences.mxc_hive}
                 onChange={this.handleChange}
-                placeholder="Enter your HIVE Unencrypted Memo key for MXC"
+                placeholder="Enter your HIVE Memo for MXC"
+              />
+              <Form.Input
+                label="HBD Memo (Unencrypted)"
+                name="mxc_hbd"
+                value={this.props.preferences.mxc_hbd}
+                onChange={this.handleChange}
+                placeholder="Enter your HBD Memo for MXC"
               />
             </Form.Group>
           </Segment>
@@ -280,16 +295,16 @@ export default class Settings extends Component {
           <Table
             definition
             collapsing
-            style={{ minWidth: '300px', margin: '0 auto' }}
+            style={{ minWidth: '300px', margin: '0 auto', width: '100%' }}
           >
             <Table.Body>
               {contactList}
               <Table.Row>
                 <Table.Cell colSpan={2} textAlign="center">
                   <Button
-                    onClick={() => this.setState({addContactModal: true})}
+                    onClick={() => this.setState({ addContactModal: true })}
                     primary
-                    >
+                  >
                     Add New Contact
                   </Button>
                 </Table.Cell>
@@ -298,7 +313,7 @@ export default class Settings extends Component {
           </Table>
         </Segment>
 
-      {modal}
+        {modal}
       </Segment>
     );
   }

@@ -8,12 +8,8 @@ import AccountName from '../global/AccountName';
 export default class PendingReward extends Component {
   getBalances(data) {
     const props = this.props.hive.props;
-    let totalVestsHive = 0
-    let totalVests = 0;
-    if (props.total_vesting_fund_hive){
-      totalVestsHive = parseFloat(props.total_vesting_fund_hive.split(' ')[0])
-      totalVests = parseFloat(props.total_vesting_shares.split(' ')[0])
-    }
+    const totalVestsHive = parseFloat(props.total_vesting_fund_hive.split(' ')[0])
+    const totalVests = parseFloat(props.total_vesting_shares.split(' ')[0])
     const mapping = {
       HBD: ['hbd_balance'],
       HBD_SAVINGS: ['savings_hbd_balance'],
@@ -39,10 +35,8 @@ export default class PendingReward extends Component {
     }
     _.forOwn(mapping, (fields: Array, assignment: string) => {
       _.forEach(fields, (field) => {
-        if (data[field]){
-          const [value] = data[field].split(' ');
-          balances[assignment] += parseFloat(value);
-        }
+        const [value] = data[field] ? data[field].split(' ') : [0];
+        balances[assignment] += parseFloat(value);
       });
     });
     balances.HP = totalVestsHive * balances.VESTS / totalVests;
@@ -67,6 +61,7 @@ export default class PendingReward extends Component {
         shortFormat: true,
         shortFormatMinValue: 1000
       };
+      let network = this.props.hive.props.network || "Hive";
       display = (
         <Segment basic>
           <Header>
@@ -75,15 +70,15 @@ export default class PendingReward extends Component {
           <Segment>
             <Statistic.Group size="tiny" widths="four">
               <Statistic>
-                <Statistic.Label>HBD</Statistic.Label>
+                <Statistic.Label>{network === "Hive" ? "HBD" : "TBD"}</Statistic.Label>
                 <Statistic.Value>{<NumericLabel params={numberFormat}>{totals.HBD}</NumericLabel>}</Statistic.Value>
               </Statistic>
               <Statistic>
-                <Statistic.Label>HIVE</Statistic.Label>
+                <Statistic.Label>{network === "Hive" ? "HIVE" : "TESTS"}</Statistic.Label>
                 <Statistic.Value>{<NumericLabel params={numberFormat}>{totals.HIVE}</NumericLabel>}</Statistic.Value>
               </Statistic>
               <Statistic>
-                <Statistic.Label>HP</Statistic.Label>
+                <Statistic.Label>{network === "Hive" ? "HP" : "TP"}</Statistic.Label>
                 <Statistic.Value>{<NumericLabel params={numberFormat}>{totals.HP}</NumericLabel>}</Statistic.Value>
               </Statistic>
               <Statistic>
@@ -117,19 +112,19 @@ export default class PendingReward extends Component {
                   Name
                 </Table.HeaderCell>
                 <Table.HeaderCell textAlign="right">
-                  HBD
+                  {network === "Hive" ? "HBD" : "TBD"}
                 </Table.HeaderCell>
                 <Table.HeaderCell textAlign="right">
-                  HIVE
+                  {network === "Hive" ? "HIVE" : "TESTS"}
                 </Table.HeaderCell>
                 <Table.HeaderCell textAlign="right">
-                  HBD
+                  {network === "Hive" ? "HBD" : "TBD"}
                 </Table.HeaderCell>
                 <Table.HeaderCell textAlign="right">
-                  HIVE
+                  {network === "Hive" ? "HIVE" : "TESTS"}
                 </Table.HeaderCell>
                 <Table.HeaderCell textAlign="right">
-                  HP
+                  {network === "Hive" ? "HP" : "TP"}
                 </Table.HeaderCell>
                 <Table.HeaderCell textAlign="right">
                   VESTS

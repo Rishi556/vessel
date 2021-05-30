@@ -1,5 +1,5 @@
 // @flow
-import hive from 'hivejs';
+import hive from '@hiveio/hive-js';
 
 import React, { Component } from 'react';
 import { Button, Divider, Form, Grid, Header, Input, Message, Modal, Segment, Table } from 'semantic-ui-react';
